@@ -1,0 +1,78 @@
+/* App.css */
+
+/* 画面全体に対応 */
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* アプリ全体のコンテナ */
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  /* 背景は薄いピンクと水色のグラデーション＋アニメーション */
+  background: linear-gradient(45deg, #ffcccb, #add8e6);
+  background-size: 200% 200%;
+  animation: backgroundAnimation 20s infinite alternate;
+}
+
+@keyframes backgroundAnimation {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+/* 盤面のグリッド。画面サイズに応じて正方形になるように aspect-ratio を利用 */
+.board-grid {
+  width: 90vmin;
+  /* max-width: 500px; */
+  aspect-ratio: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 4px;
+  padding: 4px;
+}
+
+/* 各セルのスタイル */
+.square {
+  background-color: #ffeef8;
+  border: none;
+  font-size: calc(7vw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.square:hover {
+  transform: scale(1.1);
+}
+
+/* ゲーム情報のスタイル */
+.game-info {
+  margin-top: 20px;
+  font-size: 1.5em;
+  color: #333;
+}
+
+/* デスクトップ用の調整 */
+@media (min-width: 768px) {
+  .board-grid {
+    width: 500px;
+    max-width: none;
+    aspect-ratio: 1;
+  }
+  .square {
+    font-size: 3rem;
+  }
+}
